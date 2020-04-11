@@ -71,6 +71,7 @@ app.post("/api/createUser", (req, res) => {
   console.log(user);
   if (check(user.user) && check(user.password) && check(user.email)) {
     user.id = id.toString(36).substr(2, 9);
+    user.role = "user";
     users.user.push(req.body);
     let data = JSON.stringify(users, null, 2);
     fs.writeFile("db.json", data, finished);
